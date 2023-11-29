@@ -35,9 +35,12 @@ public class TaxPayer {
 	}
 	
 	public double taxRebate(){
-		if(((this.grossTax()*30)/100)<=(this.getEducationSpending() + this.getHealthSpending()))
-			return this.grossTax() - ((this.grossTax()*30)/100);
-		return this.getEducationSpending() + this.getHealthSpending();
+		double percent = (this.grossTax()*30)/100;
+		double rebate = this.getEducationSpending() + this.getHealthSpending();
+		
+		if( percent < rebate)
+			return percent;
+		return rebate;
 	}
 
 	public double netTax(){
